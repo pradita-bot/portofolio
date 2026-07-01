@@ -230,6 +230,7 @@ export default function App() {
   const [copiedPhone, setCopiedPhone] = useState(false);
   const [copiedCertInfo, setCopiedCertInfo] = useState(false);
   const [contactForm, setContactForm] = useState({ name: "", email: "", message: "" });
+  const [submitData, setSubmitData] = useState({ name: "", email: "", message: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [selectedCert, setSelectedCert] = useState<Certificate | null>(null);
@@ -313,12 +314,12 @@ export default function App() {
     if (!contactForm.name || !contactForm.email || !contactForm.message) return;
 
     setIsSubmitting(true);
+    setSubmitData({ ...contactForm });
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitSuccess(true);
       setContactForm({ name: "", email: "", message: "" });
-      setTimeout(() => setSubmitSuccess(false), 5000);
-    }, 1200);
+    }, 1000);
   };
 
   const menuItems = [
@@ -1166,8 +1167,53 @@ export default function App() {
                   </button>
 
                   {submitSuccess && (
-                    <div className="p-4 bg-emerald-950/40 text-emerald-400 rounded-lg border border-emerald-900/60 text-xs font-mono">
-                      Pesan berhasil dikirim! Terima kasih telah menghubungi saya.
+                    <div className="p-5 bg-zinc-900 border border-zinc-800 rounded-xl space-y-4 animate-fade-in">
+                      <div className="flex items-start space-x-3">
+                        <div className="w-8 h-8 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-400 shrink-0">
+                          <Check className="w-4 h-4" />
+                        </div>
+                        <div className="space-y-1">
+                          <h4 className="text-sm font-bold text-white">Pesan Siap Dikirim!</h4>
+                          <p className="text-zinc-400 text-xs leading-relaxed">
+                            Pesan Anda telah siap. Silakan klik salah satu tombol di bawah untuk meneruskan pesan Anda secara langsung ke kontak pribadi Fajar:
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+                        <a
+                          href={`https://wa.me/6281235373688?text=${encodeURIComponent(
+                            `Halo Fajar, perkenalkan nama saya *${submitData.name}* (${submitData.email}).\n\n*Pesan:*\n${submitData.message}`
+                          )}`}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="flex items-center justify-center space-x-2 px-4 py-2.5 bg-emerald-600/90 hover:bg-emerald-500 text-white text-xs font-mono font-bold rounded-lg transition-colors"
+                        >
+                          <Phone className="w-3.5 h-3.5" />
+                          <span>KIRIM_KE_WHATSAPP</span>
+                        </a>
+                        <a
+                          href={`mailto:muhammadfajarpradita97@gmail.com?subject=Hubungi dari Portofolio - ${encodeURIComponent(
+                            submitData.name
+                          )}&body=${encodeURIComponent(
+                            `Halo Fajar,\n\nPerkenalkan saya ${submitData.name} (${submitData.email}).\n\nPesan:\n${submitData.message}`
+                          )}`}
+                          className="flex items-center justify-center space-x-2 px-4 py-2.5 bg-cyan-600/90 hover:bg-cyan-500 text-white text-xs font-mono font-bold rounded-lg transition-colors"
+                        >
+                          <Mail className="w-3.5 h-3.5" />
+                          <span>KIRIM_KE_EMAIL</span>
+                        </a>
+                      </div>
+                      
+                      <div className="text-center pt-1">
+                        <button
+                          type="button"
+                          onClick={() => setSubmitSuccess(false)}
+                          className="text-[10px] font-mono text-zinc-500 hover:text-zinc-400 transition-colors"
+                        >
+                          [ Sembunyikan Pesan Ini ]
+                        </button>
+                      </div>
                     </div>
                   )}
                 </form>
