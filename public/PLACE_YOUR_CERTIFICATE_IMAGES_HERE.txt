@@ -1,0 +1,13 @@
+Silakan unggah file gambar/scan sertifikat asli Anda di folder ini (folder /public) menggunakan File Explorer di editor kode.
+
+Gunakan nama file berikut (format .png, .jpg, atau .jpeg):
+- sbt-osint.png
+- sbt-network.png
+- cisco-endpoint.png
+- cyber-info-sec.png
+- ms-ioe-ai.png
+- sulsel-disdik.png
+- mikrotik-2025.png
+- mikrotik-2024.png
+
+Setelah diunggah, gambar asli akan langsung muncul secara otomatis ketika diklik pada web portofolio Anda.
