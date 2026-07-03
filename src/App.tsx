@@ -502,7 +502,13 @@ export default function App() {
       </header>
 
       {/* Hero Section */}
-      <section id="beranda" className="relative min-h-[calc(100vh-4rem)] lg:min-h-[calc(100vh-5rem)] flex items-center py-10 md:py-20 px-6 sm:px-8">
+      <motion.section
+        id="beranda"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="relative min-h-[calc(100vh-4rem)] lg:min-h-[calc(100vh-5rem)] flex items-center py-10 md:py-20 px-6 sm:px-8"
+      >
         <div className="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           
           {/* Hero Content */}
@@ -626,10 +632,17 @@ export default function App() {
           </div>
 
         </div>
-      </section>
+      </motion.section>
 
       {/* About Section */}
-      <section id="tentang" className="py-24 bg-zinc-900/10 border-t border-zinc-900/60">
+      <motion.section
+        id="tentang"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.15 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="py-24 bg-zinc-900/10 border-t border-zinc-900/60"
+      >
         <div className="max-w-6xl mx-auto px-6 sm:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             
@@ -691,10 +704,17 @@ export default function App() {
 
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Skills Section */}
-      <section id="keahlian" className="py-24 border-t border-zinc-900/60">
+      <motion.section
+        id="keahlian"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.15 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="py-24 border-t border-zinc-900/60"
+      >
         <div className="max-w-6xl mx-auto px-6 sm:px-8">
           
           <div className="max-w-3xl space-y-2 mb-16">
@@ -785,10 +805,17 @@ export default function App() {
 
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Experience Section */}
-      <section id="pengalaman" className="py-24 bg-zinc-900/10 border-t border-zinc-900/60">
+      <motion.section
+        id="pengalaman"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.15 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="py-24 bg-zinc-900/10 border-t border-zinc-900/60"
+      >
         <div className="max-w-6xl mx-auto px-6 sm:px-8">
           
           <div className="max-w-3xl space-y-2 mb-16">
@@ -850,10 +877,17 @@ export default function App() {
 
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Projects Section */}
-      <section id="proyek" className="py-24 border-t border-zinc-900/60">
+      <motion.section
+        id="proyek"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.15 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="py-24 border-t border-zinc-900/60"
+      >
         <div className="max-w-6xl mx-auto px-6 sm:px-8">
           
           <div className="max-w-3xl space-y-2 mb-16">
@@ -947,10 +981,17 @@ export default function App() {
 
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Certificates Section */}
-      <section id="sertifikat" className="py-24 bg-zinc-950 border-t border-zinc-900/60">
+      <motion.section
+        id="sertifikat"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.15 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="py-24 bg-zinc-950 border-t border-zinc-900/60"
+      >
         <div className="max-w-6xl mx-auto px-6 sm:px-8">
           
           <div className="max-w-3xl space-y-2 mb-16">
@@ -1136,10 +1177,17 @@ export default function App() {
           </div>
 
         </div>
-      </section>
+      </motion.section>
 
       {/* Contact Section */}
-      <section id="kontak" className="py-24 bg-zinc-900/10 border-t border-zinc-900/60">
+      <motion.section
+        id="kontak"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.15 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="py-24 bg-zinc-900/10 border-t border-zinc-900/60"
+      >
         <div className="max-w-6xl mx-auto px-6 sm:px-8">
           
           <div className="max-w-3xl space-y-2 mb-16">
@@ -1346,7 +1394,7 @@ export default function App() {
 
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Footer */}
       <footer className="py-12 bg-zinc-950 border-t border-zinc-900/60">
