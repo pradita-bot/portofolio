@@ -36,7 +36,7 @@ interface Certificate {
   skills: string[];
   type: string;
   description: string;
-  logoType: 'blueteam' | 'microsoft' | 'cisco' | 'mikrotik' | 'cyberarmy' | 'disdik';
+  logoType: 'blueteam' | 'microsoft' | 'cisco' | 'mikrotik' | 'cyberarmy' | 'disdik' | 'komdigi' | 'dicoding' | 'idnetworkers';
   details: {
     recipient: string;
     courseName: string;
@@ -219,6 +219,90 @@ const certificates: Certificate[] = [
       signatory1: "Valens Riyadi",
       signatory1Title: "Direktur PT Citraweb Solusi Teknologi",
       extraNote: "Diberikan kepada: MUHAMMAD FAJAR PRADITA (SMK NEGERI 2 LUWU TIMUR, NPSN: 40318362 - NISN: 0086143128) atas partisipasinya sebagai: PESERTA dalam acara OLIMPIADE JARINGAN MIKROTIK 2024 ANTAR SMK-TKJ TINGKAT NASIONAL."
+    }
+  },
+  {
+    id: "komdigi-fana",
+    title: "Fundamental of Associate Network Administrator - Nasional",
+    issuer: "Digital Talent Academy",
+    date: "21 Mar 2026",
+    category: "networking",
+    credentialId: "21212087840-1378/DTA/BLSDM.Komdigi/2026",
+    skills: ["Network Addressing", "Wireless Network", "Switching", "Routing Protocols (AS)", "Network Configuration"],
+    type: "Sertifikat Pelatihan",
+    description: "Menyelesaikan pelatihan intensif mengenai dasar-dasar perancangan pengalamatan jaringan, pemasangan jaringan nirkabel, switch, dan routing pada satu Autonomous System (AS).",
+    logoType: "komdigi",
+    details: {
+      recipient: "MUHAMMAD FAJAR PRADITA",
+      courseName: "Fundamental of Associate Network Administrator - Nasional",
+      datePassed: "Jakarta, 21 Maret 2026",
+      certificateId: "21212087840-1378/DTA/BLSDM.Komdigi/2026",
+      signatory1: "Bonifasius W. Pudjianto",
+      signatory1Title: "Kepala Badan Pengembangan SDM Komdigi",
+      extraNote: "Telah menyelesaikan pelatihan Fundamental of Associate Network Administrator - Nasional yang diselenggarakan oleh Pusat Pengembangan Talenta Digital pada tanggal 3 Maret 2026 - 31 Desember 2026 selama 12 Jam Pelatihan."
+    }
+  },
+  {
+    id: "komdigi-iana",
+    title: "Intermediate Associate Network Administrator - Nasional",
+    issuer: "Digital Talent Academy",
+    date: "12 Apr 2026",
+    category: "networking",
+    credentialId: "21212088840-406/DTA/BLSDM.Komdigi/2026",
+    skills: ["Network Security", "Disaster Recovery", "Inter-AS Routing", "User Account Security"],
+    type: "Sertifikat Pelatihan",
+    description: "Menyelesaikan pelatihan tingkat menengah dalam merancang keamanan jaringan, pemulihan jaringan, rute antar Autonomous System (AS), serta pemantauan akun pengguna.",
+    logoType: "komdigi",
+    details: {
+      recipient: "MUHAMMAD FAJAR PRADITA",
+      courseName: "Intermediate Associate Network Administrator - Nasional",
+      datePassed: "Jakarta, 12 April 2026",
+      certificateId: "21212088840-406/DTA/BLSDM.Komdigi/2026",
+      signatory1: "Bonifasius W. Pudjianto",
+      signatory1Title: "Kepala Badan Pengembangan SDM Komdigi",
+      extraNote: "Telah menyelesaikan pelatihan Intermediate Associate Network Administrator - Nasional yang diselenggarakan oleh Pusat Pengembangan Talenta Digital pada tanggal 3 Maret 2026 - 31 Desember 2026 selama 12 Jam Pelatihan."
+    }
+  },
+  {
+    id: "dicoding-sdd",
+    title: "Spec-Driven Development dengan Kiro",
+    issuer: "Dicoding Indonesia",
+    date: "15 Mei 2026",
+    category: "ai_dev",
+    credentialId: "72ZDJJN26ZYW",
+    skills: ["Spec-Driven Development", "Kiro IDE", "AI-Assisted Workflow", "Prompt Engineering", "Code Refactoring"],
+    type: "Sertifikat Kompetensi",
+    description: "Sertifikasi kompetensi kelulusan alur kerja AI-assisted profesional berbasis spesifikasi (Spec-Driven Development) menggunakan asisten cerdas Kiro.",
+    logoType: "dicoding",
+    details: {
+      recipient: "Muhammad Fajar Pradita",
+      courseName: "Spec-Driven Development dengan Kiro",
+      datePassed: "15 Mei 2026",
+      certificateId: "72ZDJJN26ZYW",
+      signatory1: "Narenda Wicaksono",
+      signatory1Title: "Chief Executive Officer, Dicoding Indonesia",
+      extraNote: "Telah lulus kelas Spec-Driven Development dengan Kiro. Siswa menguasai transisi dari pemrograman konvensional ke AI-assisted workflow, merancang spesifikasi yang terstruktur, bebas ambiguitas, dan mengelola evolusi fitur tanpa menurunkan kualitas kode."
+    }
+  },
+  {
+    id: "idn-cybersecurity-dasar",
+    title: "Cyber Security Dasar",
+    issuer: "ID-Networkers (IDN.ID)",
+    date: "15 Mei 2026",
+    category: "cybersecurity",
+    credentialId: "IDN-1778811741-13888-73977",
+    skills: ["Cyber Security Fundamentals", "Network Security", "Information Security Basics", "Threat Landscapes", "Online Course"],
+    type: "Certificate of Completion",
+    description: "Menyelesaikan kursus online 'Cyber Security Dasar' yang diselenggarakan oleh ID-Networkers (IDN.ID) dengan materi dasar keamanan siber, perlindungan aset digital, dan kesadaran ancaman.",
+    logoType: "idnetworkers",
+    details: {
+      recipient: "Muhammad Fajar Pradita",
+      courseName: "Cyber Security Dasar",
+      datePassed: "15 Mei 2026",
+      certificateId: "IDN-1778811741-13888-73977",
+      signatory1: "Dedi Gunawan, CCIE",
+      signatory1Title: "CEO of ID-Networkers (IDN.ID)",
+      extraNote: "Telah menyelesaikan kursus online 'Cyber Security Dasar' yang diselenggarakan oleh ID-Networkers (IDN.ID) melalui WWW.LMS.IDN.ID. Verifikasi sertifikat sah: https://lms.idn.id/cert-verification. Berlaku sampai dengan: 15-05-2029."
     }
   }
 ];
@@ -932,6 +1016,9 @@ export default function App() {
                 const isMikrotik = cert.logoType === 'mikrotik';
                 const isDisdik = cert.logoType === 'disdik';
                 const isCyberArmy = cert.logoType === 'cyberarmy';
+                const isKomdigi = cert.logoType === 'komdigi';
+                const isDicoding = cert.logoType === 'dicoding';
+                const isIDN = cert.logoType === 'idnetworkers';
 
                 return (
                   <div
@@ -977,6 +1064,9 @@ export default function App() {
                           isMS ? "bg-blue-950/80 text-blue-400 border-blue-800/40" :
                           isMikrotik ? "bg-sky-950/80 text-sky-400 border-sky-800/40" :
                           isDisdik ? "bg-amber-950/80 text-amber-400 border-amber-800/40" :
+                          isKomdigi ? "bg-sky-950/80 text-sky-400 border-sky-800/40" :
+                          isDicoding ? "bg-indigo-950/80 text-indigo-400 border-indigo-800/40" :
+                          isIDN ? "bg-red-950/80 text-red-400 border-red-800/40" :
                           "bg-emerald-950/80 text-emerald-400 border-emerald-800/40"
                         }`}>
                           {cert.issuer}
