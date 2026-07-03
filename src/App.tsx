@@ -243,7 +243,7 @@ export default function App() {
 
   useEffect(() => {
     if (selectedCert) {
-      setCertImageSrc(`/${selectedCert.id}.png`);
+      setCertImageSrc(`/${selectedCert.id}.jpg`);
       setFallbackAttempt(0);
       setImageLoadError(false);
       setModalTab("replica");
@@ -253,14 +253,14 @@ export default function App() {
   const handleImageError = () => {
     if (selectedCert) {
       const paths = [
-        `/${selectedCert.id}.png`,
         `/${selectedCert.id}.jpg`,
+        `/${selectedCert.id}.png`,
         `/${selectedCert.id}.jpeg`,
-        `/assets/${selectedCert.id}.png`,
         `/assets/${selectedCert.id}.jpg`,
+        `/assets/${selectedCert.id}.png`,
         `/assets/${selectedCert.id}.jpeg`,
-        `/src/assets/${selectedCert.id}.png`,
         `/src/assets/${selectedCert.id}.jpg`,
+        `/src/assets/${selectedCert.id}.png`,
         `/src/assets/${selectedCert.id}.jpeg`,
       ];
       const nextIndex = fallbackAttempt + 1;
@@ -937,49 +937,83 @@ export default function App() {
                   <div
                     key={cert.id}
                     onClick={() => setSelectedCert(cert)}
-                    className="group bg-zinc-900/20 rounded-xl border border-zinc-900 hover:border-zinc-800 transition-all flex flex-col h-full overflow-hidden cursor-pointer"
+                    className="group bg-zinc-900/10 hover:bg-zinc-900/30 rounded-xl border border-zinc-900/80 hover:border-zinc-850/80 transition-all duration-300 flex flex-col h-full overflow-hidden cursor-pointer shadow-lg hover:shadow-cyan-950/10"
                   >
-                    {/* Header Decorative Bar */}
-                    <div className={`h-1.5 w-full ${
-                      isSBT ? "bg-cyan-500" :
-                      isCisco ? "bg-teal-500" :
-                      isMS ? "bg-blue-600" :
-                      isMikrotik ? "bg-sky-500" :
-                      isDisdik ? "bg-amber-500" :
-                      "bg-emerald-500"
-                    }`} />
+                    {/* Certificate Thumbnail / Preview */}
+                    <div className="relative h-44 w-full overflow-hidden bg-zinc-950 border-b border-zinc-900/60 flex items-center justify-center">
+                      <img
+                        src={`/${cert.id}.jpg`}
+                        alt={cert.title}
+                        className="w-full h-full object-cover object-top transition-all duration-500 group-hover:scale-[1.03] group-hover:brightness-105"
+                        loading="lazy"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          if (!target.src.includes('.png') && !target.src.includes('.jpeg')) {
+                            // Try png fallback
+                            target.src = `/${cert.id}.png`;
+                          } else {
+                            // Hide image if truly missing, but we know they exist!
+                            target.style.display = 'none';
+                          }
+                        }}
+                      />
+                      {/* Gradient overlay for professional look */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/25 to-transparent opacity-75" />
+                      
+                      {/* Hover action banner overlay */}
+                      <div className="absolute inset-0 bg-zinc-950/85 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 backdrop-blur-[1.5px]">
+                        <div className="w-9 h-9 rounded-full bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 mb-2 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                          <ExternalLink className="w-4 h-4" />
+                        </div>
+                        <span className="text-[10px] font-mono font-bold tracking-widest text-cyan-400">LIHAT_KREDENSIAL</span>
+                        <span className="text-[9px] font-mono text-zinc-500 mt-1">ID: {cert.credentialId || "Verified"}</span>
+                      </div>
 
-                    <div className="p-6 flex-grow flex flex-col justify-between space-y-4">
-                      <div className="space-y-3">
-                        <div className="flex justify-between items-start">
-                          <span className="text-[10px] font-mono text-zinc-500">{cert.date}</span>
-                          <span className={`px-2 py-0.5 text-[9px] font-mono rounded border ${
-                            isSBT ? "bg-cyan-950/40 text-cyan-400 border-cyan-900" :
-                            isCisco ? "bg-teal-950/40 text-teal-400 border-teal-900" :
-                            isMS ? "bg-blue-950/40 text-blue-400 border-blue-900" :
-                            isMikrotik ? "bg-sky-950/40 text-sky-400 border-sky-900" :
-                            isDisdik ? "bg-amber-950/40 text-amber-400 border-amber-900" :
-                            "bg-emerald-950/40 text-emerald-400 border-emerald-900"
-                          }`}>
-                            {cert.type}
-                          </span>
+                      {/* Brand Logo Label Overlay */}
+                      <div className="absolute top-3 left-3">
+                        <span className={`px-2 py-0.5 text-[8px] font-mono font-bold uppercase rounded border backdrop-blur-md shadow-sm ${
+                          isSBT ? "bg-cyan-950/80 text-cyan-400 border-cyan-800/40" :
+                          isCisco ? "bg-teal-950/80 text-teal-400 border-teal-800/40" :
+                          isMS ? "bg-blue-950/80 text-blue-400 border-blue-800/40" :
+                          isMikrotik ? "bg-sky-950/80 text-sky-400 border-sky-800/40" :
+                          isDisdik ? "bg-amber-950/80 text-amber-400 border-amber-800/40" :
+                          "bg-emerald-950/80 text-emerald-400 border-emerald-800/40"
+                        }`}>
+                          {cert.issuer}
+                        </span>
+                      </div>
+
+                      {/* Certificate Type Label Overlay */}
+                      <div className="absolute bottom-3 right-3">
+                        <span className="px-2 py-0.5 bg-zinc-950/90 text-zinc-400 text-[8px] font-mono rounded border border-zinc-800 shadow-sm">
+                          {cert.type}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Card Content */}
+                    <div className="p-5 flex-grow flex flex-col justify-between space-y-4">
+                      <div className="space-y-2.5">
+                        <div className="flex justify-between items-center text-[10px] font-mono text-zinc-500">
+                          <span>{cert.date}</span>
+                          <span className="text-zinc-600">ID: {cert.credentialId || "VERIFIED"}</span>
                         </div>
 
                         <div>
                           <h3 className="font-display text-base font-bold text-white group-hover:text-cyan-400 transition-colors line-clamp-1">
                             {cert.title}
                           </h3>
-                          <p className="text-xs font-mono text-zinc-400 mt-1">
-                            Issued by {cert.issuer}
+                          <p className="text-[11px] font-mono text-zinc-500 mt-0.5">
+                            Penerbit: {cert.issuer}
                           </p>
                         </div>
 
-                        <p className="text-zinc-400 text-xs sm:text-sm leading-relaxed line-clamp-2">
+                        <p className="text-zinc-400 text-xs leading-relaxed line-clamp-2">
                           {cert.description}
                         </p>
                       </div>
 
-                      <div className="space-y-4 pt-2">
+                      <div className="space-y-3 pt-1">
                         {/* Tags */}
                         <div className="flex flex-wrap gap-1">
                           {cert.skills.slice(0, 3).map((sk) => (
@@ -994,14 +1028,14 @@ export default function App() {
                           )}
                         </div>
 
-                        {/* Interactive trigger indicator */}
-                        <div className="flex items-center justify-between pt-2 border-t border-zinc-900/60">
-                          <span className="text-[10px] font-mono text-zinc-500">
-                            ID: {cert.credentialId ? cert.credentialId : "Verified"}
+                        {/* Card Footer action link */}
+                        <div className="flex items-center justify-between pt-2.5 border-t border-zinc-900/60 text-[11px]">
+                          <span className="text-[10px] font-mono text-zinc-500 group-hover:text-zinc-400 transition-colors">
+                            {cert.category === "cybersecurity" ? "🛡️ CYBER_SECURITY" : cert.category === "networking" ? "🔌 NETWORKING" : "🤖 AI_DEVELOPMENT"}
                           </span>
-                          <span className="text-xs font-mono text-cyan-400 group-hover:text-cyan-300 flex items-center space-x-1">
-                            <span>Verifikasi</span>
-                            <Award className="w-3.5 h-3.5" />
+                          <span className="text-xs font-mono text-cyan-400 group-hover:text-cyan-300 flex items-center space-x-1 font-semibold">
+                            <span>Periksa</span>
+                            <ArrowRight className="w-3 h-3 transform group-hover:translate-x-0.5 transition-transform" />
                           </span>
                         </div>
                       </div>
@@ -1307,23 +1341,30 @@ export default function App() {
                           <span className="font-mono text-[10px] text-zinc-400">DOUBLE_CLICK_TO_OPEN_IN_NEW_TAB</span>
                         </div>
                         
-                        <img
-                          src={certImageSrc}
-                          alt={`Sertifikat Asli ${selectedCert.title}`}
-                          className="max-h-[60vh] object-contain rounded-lg border border-zinc-900 shadow-inner max-w-full cursor-zoom-in transition-transform duration-300 hover:scale-[1.02]"
-                          referrerPolicy="no-referrer"
-                          onError={handleImageError}
-                          onDoubleClick={() => window.open(certImageSrc, '_blank')}
-                          title="Klik dua kali untuk membuka gambar penuh di tab baru"
-                        />
+                        {certImageSrc ? (
+                          <img
+                            src={certImageSrc}
+                            alt={`Sertifikat Asli ${selectedCert.title}`}
+                            className="max-h-[60vh] object-contain rounded-lg border border-zinc-900 shadow-inner max-w-full cursor-zoom-in transition-transform duration-300 hover:scale-[1.02]"
+                            referrerPolicy="no-referrer"
+                            onError={handleImageError}
+                            onDoubleClick={() => window.open(certImageSrc, '_blank')}
+                            title="Klik dua kali untuk membuka gambar penuh di tab baru"
+                          />
+                        ) : (
+                          <div className="w-96 max-w-full h-64 flex flex-col items-center justify-center text-zinc-500 font-mono text-xs space-y-2">
+                            <span className="animate-pulse">MEMUAT_GAMBAR...</span>
+                          </div>
+                        )}
                         
                         <div className="w-full mt-3 flex justify-between items-center px-2">
                           <span className="text-[10px] font-mono text-zinc-500">
-                            SRC_PATH: {certImageSrc}
+                            SRC_PATH: {certImageSrc || "NULL"}
                           </span>
                           <button
-                            onClick={() => window.open(certImageSrc, '_blank')}
-                            className="text-[10px] font-mono text-cyan-400 hover:text-cyan-300 transition-colors flex items-center space-x-1"
+                            onClick={() => certImageSrc && window.open(certImageSrc, '_blank')}
+                            disabled={!certImageSrc}
+                            className="text-[10px] font-mono text-cyan-400 hover:text-cyan-300 disabled:text-zinc-600 transition-colors flex items-center space-x-1"
                           >
                             <span>[ Buka Tab Baru ]</span>
                           </button>
