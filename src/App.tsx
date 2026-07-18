@@ -828,6 +828,53 @@ export default function App() {
 
           <div className="max-w-4xl space-y-8">
             
+            {/* Freelance Experience Card */}
+            <div className="p-6 sm:p-8 bg-zinc-900/30 rounded-xl border border-zinc-900 space-y-6">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                  <h3 className="font-display text-lg sm:text-xl font-bold text-white">Freelance IT Support & Network Technician</h3>
+                  <p className="font-display text-sm font-semibold text-cyan-400">Lingkungan Sekolah (SMKN 2 Luwu Timur) & Komunitas Lokal — Paruh Waktu</p>
+                </div>
+                <div className="inline-flex items-center space-x-1 px-3 py-1 bg-zinc-950 text-zinc-400 font-mono text-xs rounded border border-zinc-900 w-fit">
+                  <Calendar className="w-3.5 h-3.5 text-cyan-400 mr-1" />
+                  <span>Juli 2024 – Mei 2026</span>
+                </div>
+              </div>
+
+              <div className="space-y-4 pt-4 border-t border-zinc-900 text-sm sm:text-base text-zinc-300 leading-relaxed">
+                <p className="font-medium text-zinc-100">
+                  Dukungan teknis berkala, instalasi infrastruktur nirkabel, dan pemeliharaan perangkat:
+                </p>
+
+                <ul className="space-y-3.5 font-sans">
+                  <li className="flex items-start space-x-3">
+                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 mt-2 shrink-0"></span>
+                    <span>
+                      Instalasi, konfigurasi, dan troubleshooting Access Point serta router Mikrotik untuk memastikan konektivitas internet yang stabil di lingkungan sekolah dan komunitas.
+                    </span>
+                  </li>
+                  <li className="flex items-start space-x-3">
+                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 mt-2 shrink-0"></span>
+                    <span>
+                      Penanganan perbaikan perangkat keras (hardware) dan lunak (software), meliputi instalasi ulang OS (Windows/Linux), perakitan PC, serta troubleshooting printer dan periferal lainnya.
+                    </span>
+                  </li>
+                  <li className="flex items-start space-x-3">
+                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 mt-2 shrink-0"></span>
+                    <span>
+                      Penyambungan kabel Fiber Optik (splicing) dan wiring LAN untuk perbaikan serta perluasan infrastruktur jaringan lokal.
+                    </span>
+                  </li>
+                  <li className="flex items-start space-x-3">
+                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 mt-2 shrink-0"></span>
+                    <span>
+                      Memberikan layanan technical support yang responsif kepada pengguna (end-user) dan membangun reputasi kepercayaan di lingkungan sekitar.
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
             {/* Experience Card */}
             <div className="p-6 sm:p-8 bg-zinc-900/30 rounded-xl border border-zinc-900 space-y-6">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
